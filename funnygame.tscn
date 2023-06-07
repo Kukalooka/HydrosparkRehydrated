@@ -36,12 +36,19 @@ shape = SubResource("RectangleShape2D_uyhc5")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="CharacterBody2D"]
 material = SubResource("CanvasItemMaterial_ch6od")
-position = Vector2(4, -5)
+position = Vector2(1, -5)
 process_material = SubResource("ParticleProcessMaterial_s6k4p")
 texture = ExtResource("2_dywrf")
 lifetime = 3.0
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(1, 28)
+position = Vector2(3, 22)
 texture = ExtResource("2_v1xb0")
+shoting
+
+[node name="crosshair" type="Marker2D" parent="CharacterBody2D"]
+position = Vector2(1, 73)
+rotation = -1.54113
+
 script = ExtResource("4_rmt3d")
+main
