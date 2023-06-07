@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b5jgq4m871gwj"]
+[gd_scene load_steps=20 format=3 uid="uid://b5jgq4m871gwj"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_1pipr"]
 [ext_resource type="Texture2D" uid="uid://dxlkswyeyeq06" path="res://resources/floaty_64.png" id="2_dywrf"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c3sb1tjdjx1k8" path="res://kibel-3Sheet.png" id="5_dnate"]
 [ext_resource type="Script" path="res://rotatetoMove.gd" id="6_iu0pk"]
 [ext_resource type="AudioStream" uid="uid://uwxhskub4xmr" path="res://tank.ogg" id="7_27g6a"]
+[ext_resource type="Texture2D" uid="uid://no0cakdkseec" path="res://xa40ixptjv761.jpg" id="8_5l26x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uyhc5"]
 
@@ -80,6 +81,8 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3docp"]
+
 [node name="Node2D" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
@@ -112,3 +115,22 @@ script = ExtResource("6_iu0pk")
 
 [node name="moveSound" type="AudioStreamPlayer2D" parent="CharacterBody2D/Bottom"]
 stream = ExtResource("7_27g6a")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_limit_begin = Vector2(2.08165e-12, 2.08165e-12)
+scroll_limit_end = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+show_behind_parent = true
+texture_filter = 3
+texture_repeat = 3
+material = SubResource("CanvasItemMaterial_3docp")
+position = Vector2(-204, -517)
+motion_offset = Vector2(2.08165e-12, 2.08165e-12)
+motion_mirroring = Vector2(960, 540)
+
+[node name="Xa40Ixptjv761" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_repeat = 3
+position = Vector2(405, 682)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_5l26x")
