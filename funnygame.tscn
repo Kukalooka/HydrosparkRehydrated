@@ -84,7 +84,6 @@ animations = [{
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 scale = Vector2(0.921708, 1)
 script = ExtResource("1_1pipr")
-speed = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_uyhc5")
@@ -105,5 +104,6 @@ script = ExtResource("4_rmt3d")
 show_behind_parent = true
 texture_filter = 3
 sprite_frames = SubResource("SpriteFrames_o1w0b")
+autoplay = "default"
 frame_progress = 0.835808
 script = ExtResource("6_iu0pk")
