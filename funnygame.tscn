@@ -1,9 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5jgq4m871gwj"]
+[gd_scene load_steps=7 format=3 uid="uid://b5jgq4m871gwj"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_1pipr"]
+[ext_resource type="Texture2D" uid="uid://dxlkswyeyeq06" path="res://resources/floaty_64.png" id="2_dywrf"]
 [ext_resource type="Texture2D" uid="uid://cav841by72n8d" path="res://icon.png" id="2_v1xb0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uyhc5"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ch6od"]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s6k4p"]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 20.0
+spread = 75.0
+gravity = Vector3(0, 0, 0)
+angle_min = 360.0
+angle_max = 360.0
+scale_min = 2.0
+scale_max = 3.0
+anim_speed_min = 0.5
+anim_speed_max = 1.0
 
 [node name="Node2D" type="Node2D"]
 
@@ -13,5 +33,13 @@ script = ExtResource("1_1pipr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_uyhc5")
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="CharacterBody2D"]
+material = SubResource("CanvasItemMaterial_ch6od")
+position = Vector2(4, -5)
+process_material = SubResource("ParticleProcessMaterial_s6k4p")
+texture = ExtResource("2_dywrf")
+lifetime = 3.0
+
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(1, 28)
 texture = ExtResource("2_v1xb0")
