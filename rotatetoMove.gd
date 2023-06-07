@@ -10,6 +10,9 @@ func _process(delta):
 	if get_parent().velocity.length() > 0:
 		rotation = lerp(rotation,get_parent().velocity.angle(),0.1)
 		self.play("default")
+		if not $moveSound.playing:
+			$moveSound.play()
 	else:
+		$moveSound.stop()
 		self.pause()
 	pass

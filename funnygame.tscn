@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b5jgq4m871gwj"]
+[gd_scene load_steps=18 format=3 uid="uid://b5jgq4m871gwj"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_1pipr"]
 [ext_resource type="Texture2D" uid="uid://dxlkswyeyeq06" path="res://resources/floaty_64.png" id="2_dywrf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://lookAtMeHector.gd" id="4_rmt3d"]
 [ext_resource type="Texture2D" uid="uid://c3sb1tjdjx1k8" path="res://kibel-3Sheet.png" id="5_dnate"]
 [ext_resource type="Script" path="res://rotatetoMove.gd" id="6_iu0pk"]
+[ext_resource type="AudioStream" uid="uid://uwxhskub4xmr" path="res://tank.ogg" id="7_27g6a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uyhc5"]
 
@@ -82,6 +83,7 @@ animations = [{
 [node name="Node2D" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(604, 313)
 scale = Vector2(0.921708, 1)
 script = ExtResource("1_1pipr")
 
@@ -107,3 +109,6 @@ sprite_frames = SubResource("SpriteFrames_o1w0b")
 autoplay = "default"
 frame_progress = 0.835808
 script = ExtResource("6_iu0pk")
+
+[node name="moveSound" type="AudioStreamPlayer2D" parent="CharacterBody2D/Bottom"]
+stream = ExtResource("7_27g6a")
