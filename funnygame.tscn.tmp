@@ -84,7 +84,6 @@ animations = [{
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 scale = Vector2(0.921708, 1)
 script = ExtResource("1_1pipr")
-speed = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_uyhc5")
