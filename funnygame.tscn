@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5jgq4m871gwj"]
+[gd_scene load_steps=8 format=3 uid="uid://b5jgq4m871gwj"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_1pipr"]
 [ext_resource type="Texture2D" uid="uid://dxlkswyeyeq06" path="res://resources/floaty_64.png" id="2_dywrf"]
 [ext_resource type="Texture2D" uid="uid://cav841by72n8d" path="res://icon.png" id="2_v1xb0"]
+[ext_resource type="Script" path="res://lookAtMeHector.gd" id="4_rmt3d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uyhc5"]
 
@@ -43,3 +44,4 @@ lifetime = 3.0
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 position = Vector2(1, 28)
 texture = ExtResource("2_v1xb0")
+script = ExtResource("4_rmt3d")
