@@ -1,6 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cflw53cxmm4dh"]
+[gd_scene load_steps=14 format=3 uid="uid://cflw53cxmm4dh"]
 
 [ext_resource type="Script" path="res://Button.gd" id="1_nufx6"]
+[ext_resource type="Texture2D" uid="uid://ncmyyg1jey8j" path="res://export.png" id="2_4c5w0"]
+[ext_resource type="Texture2D" uid="uid://bibhc54rq4p3h" path="res://export (3).png" id="2_dct0y"]
+[ext_resource type="Texture2D" uid="uid://c1dlaaq3eptr6" path="res://export (2).png" id="3_3ikvx"]
+[ext_resource type="Script" path="res://TextureButton.gd" id="4_q6xsk"]
+[ext_resource type="Texture2D" uid="uid://343c1oblgurh" path="res://export (1).png" id="6_nmsmw"]
 
 [sub_resource type="SystemFont" id="SystemFont_wofbn"]
 font_names = PackedStringArray("Comic Sans MS")
@@ -8,23 +13,45 @@ font_names = PackedStringArray("Comic Sans MS")
 [sub_resource type="LabelSettings" id="LabelSettings_n0io3"]
 font = SubResource("SystemFont_wofbn")
 font_size = 58
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Gradient" id="Gradient_34e4e"]
 colors = PackedColorArray(0.450538, 0.306959, 0.648021, 1, 1, 0.309804, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_fusm0"]
 gradient = SubResource("Gradient_34e4e")
+width = 1366
+
+[sub_resource type="SystemFont" id="SystemFont_lblwf"]
+font_names = PackedStringArray("Comic Sans MS")
+font_weight = 900
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_33l6j"]
+bg_color = Color(0.164706, 0.164706, 0.164706, 0.262745)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 20.0
+expand_margin_top = 10.0
+expand_margin_right = 20.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="Theme" id="Theme_t7xrt"]
+Button/font_sizes/font_size = 22
+Button/fonts/font = SubResource("SystemFont_lblwf")
+Button/styles/normal = SubResource("StyleBoxFlat_33l6j")
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Label" type="Label" parent="."]
-offset_left = 471.0
-offset_top = 133.0
-offset_right = 862.0
-offset_bottom = 301.0
+offset_left = 855.0
+offset_top = 199.0
+offset_right = 1246.0
+offset_bottom = 367.0
 size_flags_horizontal = 4
-text = "HYDROSPARK
-REHYDRATED"
+text = "REHYDRATED"
 label_settings = SubResource("LabelSettings_n0io3")
 horizontal_alignment = 1
 metadata/_edit_group_ = true
@@ -34,17 +61,47 @@ metadata/_edit_group_ = true
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(665, 350)
-scale = Vector2(5.93877, 971.246)
+scale = Vector2(1, 786)
 texture = SubResource("GradientTexture1D_fusm0")
+centered = false
 
 [node name="Button" type="Button" parent="."]
-offset_left = 495.0
-offset_top = 412.0
-offset_right = 817.0
-offset_bottom = 456.0
+offset_left = 1016.0
+offset_top = 376.0
+offset_right = 1091.0
+offset_bottom = 408.0
+theme = SubResource("Theme_t7xrt")
 action_mode = 0
-text = "start"
+text = "START"
+script = ExtResource("1_nufx6")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 1237.0
+offset_top = 670.0
+offset_right = 1330.0
+offset_bottom = 752.0
+texture_normal = ExtResource("2_dct0y")
+texture_hover = ExtResource("3_3ikvx")
+script = ExtResource("4_q6xsk")
+
+[node name="Export" type="Sprite2D" parent="."]
+position = Vector2(205, 540)
+texture = ExtResource("2_4c5w0")
+
+[node name="Export(1)" type="Sprite2D" parent="."]
+position = Vector2(918, 140)
+texture = ExtResource("6_nmsmw")
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 1000.0
+offset_top = 480.0
+offset_right = 1100.0
+offset_bottom = 512.0
+theme = SubResource("Theme_t7xrt")
+action_mode = 0
+text = "CREDITS"
 script = ExtResource("1_nufx6")
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]
+[connection signal="pressed" from="Button2" to="Button2" method="_on_pressed"]
