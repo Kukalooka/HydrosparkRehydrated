@@ -12,6 +12,7 @@ func _ready():
 	hp = 100
 	dmg = 10
 	player = $"../Player"
+	self.set_meta("type", "enemy")
 	var size = get_viewport().size
 	match randi_range(0, 3):
 		0:
@@ -39,8 +40,14 @@ func _process(delta):
 	#position += dir
 	move_and_slide()
 	
-	
 	pass
+	
+func _physics_process(delta):
+	for i in get_slide_collision_count():
+		if get_slide_collision(i).get_collider().get_meta("type") == "projectile":
+			$Sprite2D/impact.play()
+			get_slide_collision(i).get_collider().queue_free()
+			queue_free()
 
 func takeDmg(dmg):
 	hp -= dmg

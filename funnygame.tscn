@@ -1,14 +1,19 @@
 [gd_scene load_steps=24 format=3 uid="uid://b5jgq4m871gwj"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_1pipr"]
+[ext_resource type="Texture2D" uid="uid://cy403uqyhj7iw" path="res://floor.png" id="1_sxidc"]
+[ext_resource type="Texture2D" uid="uid://2yv6ls7sc7md" path="res://tile000.png" id="1_wsc8w"]
+[ext_resource type="Texture2D" uid="uid://dqdm5c64nqmhc" path="res://tile001.png" id="2_6qhlf"]
 [ext_resource type="Texture2D" uid="uid://dxlkswyeyeq06" path="res://resources/floaty_64.png" id="2_dywrf"]
+[ext_resource type="Texture2D" uid="uid://q8derqguw7l7" path="res://tile002.png" id="3_5vo5g"]
 [ext_resource type="Texture2D" uid="uid://c7tmltcu2sa3d" path="res://kibel-Sheet.png" id="3_n17ec"]
+[ext_resource type="Texture2D" uid="uid://dxqvu4jki8ynl" path="res://kibel-Shee2t.png" id="4_macav"]
 [ext_resource type="Script" path="res://lookAtMeHector.gd" id="4_rmt3d"]
 [ext_resource type="Texture2D" uid="uid://c3sb1tjdjx1k8" path="res://kibel-3Sheet.png" id="5_dnate"]
+[ext_resource type="AudioStream" uid="uid://ptm56h3hjjfm" path="res://Wide Beam Shot.wav" id="6_bbr7j"]
 [ext_resource type="Script" path="res://rotatetoMove.gd" id="6_iu0pk"]
 [ext_resource type="AudioStream" uid="uid://uwxhskub4xmr" path="res://tank.ogg" id="7_27g6a"]
 [ext_resource type="PackedScene" uid="uid://cmhjwfha6p1yu" path="res://enemy_spawner.tscn" id="8_3aqrr"]
-[ext_resource type="Texture2D" uid="uid://no0cakdkseec" path="res://xa40ixptjv761.jpg" id="8_5l26x"]
 [ext_resource type="Script" path="res://Node2D.gd" id="8_fku6e"]
 [ext_resource type="PackedScene" uid="uid://b0hjk5unbhw1x" path="res://enemy.tscn" id="10_uhiwb"]
 [ext_resource type="PackedScene" uid="uid://dwqmvn6rwene4" path="res://enemy_rotate.tscn" id="12_enjgf"]
@@ -42,6 +47,18 @@ region = Rect2(0, 0, 96, 102)
 atlas = ExtResource("3_n17ec")
 region = Rect2(96, 0, 96, 102)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajtip"]
+atlas = ExtResource("4_macav")
+region = Rect2(0, 0, 96, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aiqto"]
+atlas = ExtResource("4_macav")
+region = Rect2(96, 0, 96, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0smk"]
+atlas = ExtResource("4_macav")
+region = Rect2(192, 0, 96, 102)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_7ced6"]
 animations = [{
 "frames": [{
@@ -54,6 +71,20 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajtip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aiqto")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0smk")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 30.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n3f3q"]
@@ -85,9 +116,39 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3docp"]
-
 [node name="Node2D" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+process_mode = 3
+process_priority = 3
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_repeat = 2
+position = Vector2(-395, -278)
+motion_scale = Vector2(1.2, 1.2)
+motion_mirroring = Vector2(2560, 2560)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture_repeat = 2
+position = Vector2(-340, -295)
+texture = SubResource("AnimatedTexture_yk6hc")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 2560, 2560)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = 5
+texture_repeat = 2
+motion_mirroring = Vector2(1920, 1920)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+z_index = 5
+texture_repeat = 2
+texture = ExtResource("1_sxidc")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1920, 1920)
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(604, 313)
@@ -108,7 +169,11 @@ lifetime = 3.0
 [node name="Top" type="AnimatedSprite2D" parent="Player"]
 texture_filter = 3
 sprite_frames = SubResource("SpriteFrames_7ced6")
+animation = &"shoot"
 script = ExtResource("4_rmt3d")
+
+[node name="shoot" type="AudioStreamPlayer2D" parent="Player/Top"]
+stream = ExtResource("6_bbr7j")
 
 [node name="Bottom" type="AnimatedSprite2D" parent="Player"]
 show_behind_parent = true
@@ -127,24 +192,8 @@ script = ExtResource("8_fku6e")
 [node name="crosshair" type="Marker2D" parent="Player/Node2D"]
 position = Vector2(50, -3.05176e-05)
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scroll_limit_begin = Vector2(2.08165e-12, 2.08165e-12)
-scroll_limit_end = Vector2(2.08165e-12, 2.08165e-12)
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-show_behind_parent = true
-texture_filter = 3
-texture_repeat = 3
-material = SubResource("CanvasItemMaterial_3docp")
-position = Vector2(-204, -517)
-motion_offset = Vector2(2.08165e-12, 2.08165e-12)
-motion_mirroring = Vector2(960, 540)
-
-[node name="Xa40Ixptjv761" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-texture_repeat = 3
-position = Vector2(385, 673)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("8_5l26x")
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
 
 [node name="EnemySpawner" parent="." instance=ExtResource("8_3aqrr")]
 Enemy = ExtResource("10_uhiwb")
