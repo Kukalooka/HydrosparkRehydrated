@@ -85,7 +85,7 @@ texture_hover = ExtResource("3_3ikvx")
 script = ExtResource("4_q6xsk")
 
 [node name="Export" type="Sprite2D" parent="."]
-position = Vector2(205, 540)
+position = Vector2(256, 496)
 texture = ExtResource("2_4c5w0")
 
 [node name="Export(1)" type="Sprite2D" parent="."]
