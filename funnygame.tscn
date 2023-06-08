@@ -159,7 +159,6 @@ region_rect = Rect2(0, 0, 1920, 1920)
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(604, 313)
-rotation = 1.14319
 scale = Vector2(0.921708, 1)
 script = ExtResource("1_1pipr")
 
