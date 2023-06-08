@@ -5,6 +5,10 @@ var hp
 var dmg
 @export var speed: int
 
+var rotate
+var distance
+var d
+var maxDistance
 var overall_speed
 
 # Called when the node enters the scene tree for the first time.
@@ -12,7 +16,6 @@ func _ready():
 	hp = 100
 	dmg = 10
 	player = $"../Player"
-	self.set_meta("type", "enemy")
 	var size = get_viewport().size
 	match randi_range(0, 3):
 		0:
@@ -25,29 +28,35 @@ func _ready():
 			position = Vector2(randi_range(0, size.x), size.y+100)
 	
 	
-	overall_speed = 1
+	rotate = 0
+	distance = 0
+	maxDistance = 1
+	overall_speed = 2
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var destination = player.position
+	distance += 0.001
+	if distance >= maxDistance * 2:
+		distance -= maxDistance * 2
+	if distance > maxDistance:
+		d = distance
+	else:
+		d = maxDistance - distance
+	#takeDmg(1)
+	rotate += 0.01 * overall_speed
+	var destination = player.position + Vector2(cos(rotate), sin(rotate)) * 450 * d
 	
 	var angle = atan2(destination.y - position.y, destination.x - position.x)
 	var dir = Vector2(cos(angle), sin(angle))
 	
-	velocity = dir * speed * 25 * overall_speed
+	velocity = dir * speed * 2 * overall_speed
 	#position += dir
 	move_and_slide()
 	
-	pass
 	
-func _physics_process(delta):
-	for i in get_slide_collision_count():
-		if get_slide_collision(i).get_collider().get_meta("type") == "projectile":
-			$Sprite2D/impact.play()
-			get_slide_collision(i).get_collider().queue_free()
-			queue_free()
+	pass
 
 func takeDmg(dmg):
 	hp -= dmg
