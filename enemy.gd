@@ -42,6 +42,11 @@ func _process(delta):
 		
 	
 	pass
+	
+func _physics_process(delta):
+	for i in get_slide_collision_count():
+		if get_slide_collision(i).get_collider().get_meta("type") == "projectile":
+			queue_free()
 
 func takeDmg(dmg):
 	hp -= dmg

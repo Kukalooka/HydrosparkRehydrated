@@ -1,10 +1,12 @@
-[gd_scene load_steps=22 format=3 uid="uid://b5jgq4m871gwj"]
+[gd_scene load_steps=27 format=3 uid="uid://b5jgq4m871gwj"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_1pipr"]
 [ext_resource type="Texture2D" uid="uid://dxlkswyeyeq06" path="res://resources/floaty_64.png" id="2_dywrf"]
 [ext_resource type="Texture2D" uid="uid://c7tmltcu2sa3d" path="res://kibel-Sheet.png" id="3_n17ec"]
+[ext_resource type="Texture2D" uid="uid://dxqvu4jki8ynl" path="res://kibel-Shee2t.png" id="4_macav"]
 [ext_resource type="Script" path="res://lookAtMeHector.gd" id="4_rmt3d"]
 [ext_resource type="Texture2D" uid="uid://c3sb1tjdjx1k8" path="res://kibel-3Sheet.png" id="5_dnate"]
+[ext_resource type="AudioStream" uid="uid://ptm56h3hjjfm" path="res://Wide Beam Shot.wav" id="6_bbr7j"]
 [ext_resource type="Script" path="res://rotatetoMove.gd" id="6_iu0pk"]
 [ext_resource type="AudioStream" uid="uid://uwxhskub4xmr" path="res://tank.ogg" id="7_27g6a"]
 [ext_resource type="PackedScene" uid="uid://cmhjwfha6p1yu" path="res://enemy_spawner.tscn" id="8_3aqrr"]
@@ -40,6 +42,18 @@ region = Rect2(0, 0, 96, 102)
 atlas = ExtResource("3_n17ec")
 region = Rect2(96, 0, 96, 102)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajtip"]
+atlas = ExtResource("4_macav")
+region = Rect2(0, 0, 96, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aiqto"]
+atlas = ExtResource("4_macav")
+region = Rect2(96, 0, 96, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0smk"]
+atlas = ExtResource("4_macav")
+region = Rect2(192, 0, 96, 102)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_7ced6"]
 animations = [{
 "frames": [{
@@ -52,6 +66,20 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajtip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aiqto")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0smk")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 30.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n3f3q"]
@@ -106,7 +134,14 @@ lifetime = 3.0
 [node name="Top" type="AnimatedSprite2D" parent="Player"]
 texture_filter = 3
 sprite_frames = SubResource("SpriteFrames_7ced6")
+animation = &"shoot"
 script = ExtResource("4_rmt3d")
+
+[node name="shoot" type="AudioStreamPlayer2D" parent="Player/Top"]
+stream = ExtResource("6_bbr7j")
+
+[node name="impact" type="AudioStreamPlayer2D" parent="Player/Top"]
+stream = ExtResource("6_bbr7j")
 
 [node name="Bottom" type="AnimatedSprite2D" parent="Player"]
 show_behind_parent = true
@@ -123,8 +158,7 @@ stream = ExtResource("7_27g6a")
 script = ExtResource("8_fku6e")
 
 [node name="crosshair" type="Marker2D" parent="Player/Node2D"]
-position = Vector2(50, -3.05176e-05)
-scale = Vector2(1, 1)
+position = Vector2(34.5283, 38.6804)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_limit_begin = Vector2(2.08165e-12, 2.08165e-12)
@@ -146,3 +180,5 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_5l26x")
 
 [node name="EnemySpawner" parent="." instance=ExtResource("8_3aqrr")]
+
+[connection signal="animation_finished" from="Player/Top" to="Player" method="_on_top_animation_finished"]
