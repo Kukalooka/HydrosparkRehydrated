@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://cflw53cxmm4dh"]
+
+[ext_resource type="Script" path="res://Button.gd" id="1_nufx6"]
+
+[sub_resource type="SystemFont" id="SystemFont_wofbn"]
+font_names = PackedStringArray("Comic Sans MS")
+
+[sub_resource type="LabelSettings" id="LabelSettings_n0io3"]
+font = SubResource("SystemFont_wofbn")
+font_size = 58
+
+[sub_resource type="Gradient" id="Gradient_34e4e"]
+colors = PackedColorArray(0.450538, 0.306959, 0.648021, 1, 1, 0.309804, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fusm0"]
+gradient = SubResource("Gradient_34e4e")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 471.0
+offset_top = 133.0
+offset_right = 862.0
+offset_bottom = 301.0
+size_flags_horizontal = 4
+text = "HYDROSPARK
+REHYDRATED"
+label_settings = SubResource("LabelSettings_n0io3")
+horizontal_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(665, 350)
+scale = Vector2(5.93877, 971.246)
+texture = SubResource("GradientTexture1D_fusm0")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 495.0
+offset_top = 412.0
+offset_right = 817.0
+offset_bottom = 456.0
+action_mode = 0
+text = "start"
+script = ExtResource("1_nufx6")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
