@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Enemy.gd" id="1_jp77o"]
 [ext_resource type="Texture2D" uid="uid://c3sb1tjdjx1k8" path="res://kibel-3Sheet.png" id="2_3c8ip"]
 
+
 [node name="Enemy" type="Node2D"]
 position = Vector2(400, 150)
 script = ExtResource("1_jp77o")
