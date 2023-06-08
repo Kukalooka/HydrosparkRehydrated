@@ -41,12 +41,13 @@ func _process(delta):
 		#position += dir
 		move_and_slide()
 		
-	
+		$Sprite2D.look_at(player.position)
 	pass
 	
 func _physics_process(delta):
 	for i in get_slide_collision_count():
 		if get_slide_collision(i).get_collider().get_meta("type") == "projectile":
+			$Sprite2D/impact.play()
 			get_slide_collision(i).get_collider().queue_free()
 			queue_free()
 
