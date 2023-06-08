@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b5jgq4m871gwj"]
+[gd_scene load_steps=31 format=3 uid="uid://b5jgq4m871gwj"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_1pipr"]
 [ext_resource type="Texture2D" uid="uid://cy403uqyhj7iw" path="res://floor.png" id="1_sxidc"]
@@ -15,8 +15,15 @@
 [ext_resource type="AudioStream" uid="uid://uwxhskub4xmr" path="res://tank.ogg" id="7_27g6a"]
 [ext_resource type="PackedScene" uid="uid://cmhjwfha6p1yu" path="res://enemy_spawner.tscn" id="8_3aqrr"]
 [ext_resource type="Script" path="res://Node2D.gd" id="8_fku6e"]
-[ext_resource type="PackedScene" uid="uid://b0hjk5unbhw1x" path="res://enemy.tscn" id="10_uhiwb"]
-[ext_resource type="PackedScene" uid="uid://dwqmvn6rwene4" path="res://enemy_rotate.tscn" id="12_enjgf"]
+[ext_resource type="AudioStream" uid="uid://cqrlklvmlf7j" path="res://Start wave MVM - Team Fortress 2 OST.mp3" id="16_wjxsb"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_yk6hc"]
+frames = 3
+frame_0/texture = ExtResource("1_wsc8w")
+frame_1/texture = ExtResource("2_6qhlf")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_5vo5g")
+frame_2/duration = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uyhc5"]
 
@@ -190,13 +197,16 @@ stream = ExtResource("7_27g6a")
 script = ExtResource("8_fku6e")
 
 [node name="crosshair" type="Marker2D" parent="Player/Node2D"]
-position = Vector2(50, -3.05176e-05)
+position = Vector2(34.5283, 38.6804)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
 
 [node name="EnemySpawner" parent="." instance=ExtResource("8_3aqrr")]
-Enemy = ExtResource("10_uhiwb")
 
-[node name="EnemySpawner2" parent="." instance=ExtResource("8_3aqrr")]
-Enemy = ExtResource("12_enjgf")
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_wjxsb")
+volume_db = -14.0
+autoplay = true
+
+[connection signal="animation_finished" from="Player/Top" to="Player" method="_on_top_animation_finished"]
