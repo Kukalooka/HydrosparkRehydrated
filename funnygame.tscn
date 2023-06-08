@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b5jgq4m871gwj"]
+[gd_scene load_steps=24 format=3 uid="uid://b5jgq4m871gwj"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_1pipr"]
 [ext_resource type="Texture2D" uid="uid://dxlkswyeyeq06" path="res://resources/floaty_64.png" id="2_dywrf"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cmhjwfha6p1yu" path="res://enemy_spawner.tscn" id="8_3aqrr"]
 [ext_resource type="Texture2D" uid="uid://no0cakdkseec" path="res://xa40ixptjv761.jpg" id="8_5l26x"]
 [ext_resource type="Script" path="res://Node2D.gd" id="8_fku6e"]
+[ext_resource type="PackedScene" uid="uid://b0hjk5unbhw1x" path="res://enemy.tscn" id="10_uhiwb"]
+[ext_resource type="PackedScene" uid="uid://dwqmvn6rwene4" path="res://enemy_rotate.tscn" id="12_enjgf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uyhc5"]
 
@@ -124,7 +126,6 @@ script = ExtResource("8_fku6e")
 
 [node name="crosshair" type="Marker2D" parent="Player/Node2D"]
 position = Vector2(50, -3.05176e-05)
-scale = Vector2(1, 1)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_limit_begin = Vector2(2.08165e-12, 2.08165e-12)
@@ -146,3 +147,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_5l26x")
 
 [node name="EnemySpawner" parent="." instance=ExtResource("8_3aqrr")]
+Enemy = ExtResource("10_uhiwb")
+
+[node name="EnemySpawner2" parent="." instance=ExtResource("8_3aqrr")]
+Enemy = ExtResource("12_enjgf")
