@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b5jgq4m871gwj"]
+[gd_scene load_steps=22 format=3 uid="uid://b5jgq4m871gwj"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_1pipr"]
 [ext_resource type="Texture2D" uid="uid://dxlkswyeyeq06" path="res://resources/floaty_64.png" id="2_dywrf"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://uwxhskub4xmr" path="res://tank.ogg" id="7_27g6a"]
 [ext_resource type="PackedScene" uid="uid://cmhjwfha6p1yu" path="res://enemy_spawner.tscn" id="8_3aqrr"]
 [ext_resource type="Texture2D" uid="uid://no0cakdkseec" path="res://xa40ixptjv761.jpg" id="8_5l26x"]
+[ext_resource type="Script" path="res://Node2D.gd" id="8_fku6e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uyhc5"]
 
@@ -88,6 +89,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(604, 313)
+rotation = 1.14319
 scale = Vector2(0.921708, 1)
 script = ExtResource("1_1pipr")
 
@@ -117,6 +119,13 @@ script = ExtResource("6_iu0pk")
 [node name="moveSound" type="AudioStreamPlayer2D" parent="Player/Bottom"]
 stream = ExtResource("7_27g6a")
 
+[node name="Node2D" type="Node2D" parent="Player"]
+script = ExtResource("8_fku6e")
+
+[node name="crosshair" type="Marker2D" parent="Player/Node2D"]
+position = Vector2(50, -3.05176e-05)
+scale = Vector2(1, 1)
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_limit_begin = Vector2(2.08165e-12, 2.08165e-12)
 scroll_limit_end = Vector2(2.08165e-12, 2.08165e-12)
@@ -132,7 +141,7 @@ motion_mirroring = Vector2(960, 540)
 
 [node name="Xa40Ixptjv761" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture_repeat = 3
-position = Vector2(405, 682)
+position = Vector2(385, 673)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_5l26x")
 

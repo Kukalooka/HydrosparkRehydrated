@@ -18,4 +18,9 @@ func shot():
 	var bullet = bulletPath.instantiate()
 	
 	get_parent().add_child(bullet)
+	bullet.position = $Node2D/crosshair.global_position
+	bullet.rotation = $Node2D.global_rotation	
+	
+	
+	
 	
