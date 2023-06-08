@@ -41,7 +41,7 @@ func _process(delta):
 		#position += dir
 		move_and_slide()
 		
-	
+		$Sprite2D.look_at(player.position)
 	pass
 	
 func _physics_process(delta):
