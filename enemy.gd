@@ -5,8 +5,6 @@ var hp
 var dmg
 @export var speed: int
 
-var overall_speed
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hp = 100
@@ -16,30 +14,34 @@ func _ready():
 	var size = get_viewport().size
 	match randi_range(0, 3):
 		0:
-			position = Vector2(-100, randi_range(0, size.y))
+			position = Vector2(player.position.x - size.x/2,player.position.y + randi_range(-size.y/2,size.y/2))
 		1:
-			position = Vector2(size.x+100, randi_range(0, size.y))
+			position = Vector2(player.position.x + size.x/2,player.position.y + randi_range(-size.y/2,size.y/2))
 		2:
-			position = Vector2(randi_range(0, size.x), -100)
+			position = Vector2(player.position.x + randi_range(-size.x/2,size.x/2),player.position.y - size.y/2)
 		3:
-			position = Vector2(randi_range(0, size.x), size.y+100)
-	
-	
-	overall_speed = 1
+			position = Vector2(player.position.x + randi_range(-size.x/2,size.x/2),player.position.y + size.y/2)
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var destination = player.position
-	
-	var angle = atan2(destination.y - position.y, destination.x - position.x)
-	var dir = Vector2(cos(angle), sin(angle))
-	
-	velocity = dir * speed * 25 * overall_speed
-	#position += dir
-	move_and_slide()
-	
+	#takeDmg(1)
+	if(player != null):
+		var dir_x = player.position.x - position.x
+		var dir_y = player.position.y - position.y
+		
+		var angle = atan2(dir_y, dir_x)
+		
+		var dir = Vector2(cos(angle), sin(angle))
+		#if(is_nan(dir.x)): dir.x = 0
+		#if(is_nan(dir.y)): dir.y = 0
+		
+		velocity = dir * speed
+		#position += dir
+		move_and_slide()
+		
+		$Sprite2D.look_at(player.position)
 	pass
 	
 func _physics_process(delta):
@@ -52,5 +54,5 @@ func _physics_process(delta):
 func takeDmg(dmg):
 	hp -= dmg
 	if(hp <= 0):
-		queue_free()
+		free()
 	pass
