@@ -118,8 +118,6 @@ script = ExtResource("6_iu0pk")
 [node name="moveSound" type="AudioStreamPlayer2D" parent="Player/Bottom"]
 stream = ExtResource("7_27g6a")
 
-
-[node name="EnemySpawner" parent="." instance=ExtResource("8_3aqrr")]
 position = Vector2(248, 525)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
