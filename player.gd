@@ -36,19 +36,15 @@ func _on_top_animation_finished():
 
 func takeDmg(dmg):
 	if !damage_boost:
-		print(hp)
 		$Timer.wait_time = 1 # wait_time in seconds
 		$Timer.start()
 		damage_boost = true
 		hp -= dmg
-		print(hp)
 		if hp <= 0:
-			print("reset")
 			get_tree().change_scene_to_file("res://menuscene.tscn")
 	pass
 
 func _on_timer_timeout():
-	print("stop")
 	$Timer.stop()
 	damage_boost = false
 	pass # Replace with function body.
