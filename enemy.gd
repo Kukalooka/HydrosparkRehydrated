@@ -9,7 +9,6 @@ var dir
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hp = 100
-	dmg = 10
 	player = $"../Player"
 	self.set_meta("type", "enemy")
 	var size = get_viewport().size
@@ -54,8 +53,3 @@ func _physics_process(delta):
 				$"../Player".takeDmg(1, dir)
 				queue_free()
 
-func takeDmg(dmg):
-	hp -= dmg
-	if(hp <= 0):
-		free()
-	pass

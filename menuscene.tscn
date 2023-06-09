@@ -1,11 +1,11 @@
 [gd_scene load_steps=15 format=3 uid="uid://cflw53cxmm4dh"]
 
 [ext_resource type="Script" path="res://Button.gd" id="1_nufx6"]
-[ext_resource type="Texture2D" path="res://export.png" id="2_4c5w0"]
-[ext_resource type="Texture2D" path="res://export (3).png" id="2_dct0y"]
-[ext_resource type="Texture2D" path="res://export (2).png" id="3_3ikvx"]
+[ext_resource type="Texture2D" uid="uid://ncmyyg1jey8j" path="res://export.png" id="2_4c5w0"]
+[ext_resource type="Texture2D" uid="uid://bibhc54rq4p3h" path="res://export (3).png" id="2_dct0y"]
+[ext_resource type="Texture2D" uid="uid://c1dlaaq3eptr6" path="res://export (2).png" id="3_3ikvx"]
 [ext_resource type="Script" path="res://TextureButton.gd" id="4_q6xsk"]
-[ext_resource type="Texture2D" path="res://export (1).png" id="6_nmsmw"]
+[ext_resource type="Texture2D" uid="uid://343c1oblgurh" path="res://export (1).png" id="6_nmsmw"]
 
 [sub_resource type="SystemFont" id="SystemFont_7wwih"]
 font_names = PackedStringArray("Comic Sans MS")

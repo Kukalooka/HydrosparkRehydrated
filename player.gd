@@ -22,7 +22,7 @@ func _physics_process(delta):
 	get_input()
 	move_and_slide()
 	if Data.hp <= 0:
-		get_tree().change_scene_to_file("res://menuscene.tscn")
+		get_tree().change_scene_to_file("res://lost.tscn")
 	
 
 func shot():
@@ -43,12 +43,14 @@ func takeDmg(dmg, dir):
 	position += velocity
 	if !damage_boost:
 		$Timer.wait_time = 1 # wait_time in seconds
+		print("startw")
 		$Timer.start()
 		damage_boost = true
 		Data.hp -= dmg
 	pass
 
 func _on_timer_timeout():
+	print("stop")
 	$Timer.stop()
 	damage_boost = false
 	pass # Replace with function body.

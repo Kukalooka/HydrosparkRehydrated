@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://66qxbwtbtguw"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_ylv11"]
-[ext_resource type="Texture2D" path="res://bot.png" id="2_4hvc3"]
-[ext_resource type="AudioStream" path="res://Wide Beam Shot.wav" id="3_lo8mq"]
+[ext_resource type="Texture2D" uid="uid://dr4ngytgf02t6" path="res://bot.png" id="2_4hvc3"]
+[ext_resource type="AudioStream" uid="uid://ptm56h3hjjfm" path="res://Wide Beam Shot.wav" id="3_lo8mq"]
 [ext_resource type="AudioStream" uid="uid://3ijoetasvhfq" path="res://Cartoon Car Engine Sound Effect.mp3" id="4_pg12e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sbhwt"]
