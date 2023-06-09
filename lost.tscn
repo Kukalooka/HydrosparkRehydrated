@@ -1,0 +1,101 @@
+[gd_scene load_steps=11 format=3 uid="uid://dbk010p0kf2m1"]
+
+[ext_resource type="Texture2D" uid="uid://bfrtw2xlam61e" path="res://export (4).png" id="1_8tl5g"]
+[ext_resource type="Script" path="res://Button.gd" id="2_t878r"]
+
+[sub_resource type="SystemFont" id="SystemFont_p847r"]
+font_names = PackedStringArray("", "MS UI Gothic")
+
+[sub_resource type="LabelSettings" id="LabelSettings_4bwqx"]
+font = SubResource("SystemFont_p847r")
+font_size = 58
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_34e4e"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_f8inc"]
+gradient = SubResource("Gradient_34e4e")
+width = 1366
+
+[sub_resource type="SystemFont" id="SystemFont_lblwf"]
+font_names = PackedStringArray("Comic Sans MS")
+font_weight = 900
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xuus3"]
+bg_color = Color(0.0823529, 0.0823529, 0.0823529, 0.509804)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 20.0
+expand_margin_top = 10.0
+expand_margin_right = 20.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_33l6j"]
+bg_color = Color(0.164706, 0.164706, 0.164706, 0.262745)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 20.0
+expand_margin_top = 10.0
+expand_margin_right = 20.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="Theme" id="Theme_da0oj"]
+Button/font_sizes/font_size = 22
+Button/fonts/font = SubResource("SystemFont_lblwf")
+Button/styles/hover = SubResource("StyleBoxFlat_xuus3")
+Button/styles/normal = SubResource("StyleBoxFlat_33l6j")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 464.0
+offset_top = 176.0
+offset_right = 855.0
+offset_bottom = 344.0
+size_flags_horizontal = 4
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_4bwqx")
+horizontal_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(1, 786)
+texture = SubResource("GradientTexture1D_f8inc")
+centered = false
+
+[node name="Export(4)" type="Sprite2D" parent="."]
+position = Vector2(672, 648)
+texture = ExtResource("1_8tl5g")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 584.0
+offset_top = 480.0
+offset_right = 726.0
+offset_bottom = 512.0
+theme = SubResource("Theme_da0oj")
+action_mode = 0
+text = "MAIN MENU"
+script = ExtResource("2_t878r")
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 584.0
+offset_top = 384.0
+offset_right = 714.0
+offset_bottom = 416.0
+theme = SubResource("Theme_da0oj")
+action_mode = 0
+text = "TRY AGAIN"
+script = ExtResource("2_t878r")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="pressed" from="Button2" to="Button2" method="_on_pressed"]
