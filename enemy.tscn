@@ -5,8 +5,8 @@
 [ext_resource type="AudioStream" path="res://Wide Beam Shot.wav" id="3_lo8mq"]
 [ext_resource type="AudioStream" uid="uid://3ijoetasvhfq" path="res://Cartoon Car Engine Sound Effect.mp3" id="4_pg12e"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_f02r5"]
-radius = 50.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_sbhwt"]
+radius = 35.0
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_ylv11")
@@ -28,4 +28,4 @@ max_distance = 1000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
-shape = SubResource("CircleShape2D_f02r5")
+shape = SubResource("CircleShape2D_sbhwt")
