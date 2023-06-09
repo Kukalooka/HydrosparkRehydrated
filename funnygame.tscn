@@ -214,7 +214,7 @@ offset_bottom = -273.0
 layout_mode = 1
 offset_right = 40.0
 offset_bottom = 40.0
-color = Color(1, 0, 0, 1)
+color = Color(0, 0.592157, 1, 1)
 script = ExtResource("17_wm25q")
 
 [node name="Timer" type="Timer" parent="Player"]

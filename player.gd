@@ -11,14 +11,18 @@ func _ready():
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
+	Data.hp -= abs(input_direction.normalized().x + input_direction.normalized().y ) / 1000
 	velocity = input_direction * speed
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed('shot'):
+		Data.hp -= 0.1
 		$Top/shoot.play()
 		$Top.play("shoot")
 	get_input()
 	move_and_slide()
+	if Data.hp <= 0:
+		get_tree().change_scene_to_file("res://menuscene.tscn")
 	
 
 func shot():
@@ -42,8 +46,6 @@ func takeDmg(dmg, dir):
 		$Timer.start()
 		damage_boost = true
 		Data.hp -= dmg
-		if Data.hp <= 0:
-			get_tree().change_scene_to_file("res://menuscene.tscn")
 	pass
 
 func _on_timer_timeout():

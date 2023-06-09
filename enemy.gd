@@ -30,9 +30,8 @@ func _process(delta):
 	#takeDmg(1)
 	if(player != null):
 		
-		var angle = atan2(player.position.y - position.y, player.position.x - position.x)
 		
-		dir = Vector2(cos(angle), sin(angle))
+		dir = Vector2(player.position.x - position.x, player.position.y - position.y).normalized()
 		#if(is_nan(dir.x)): dir.x = 0
 		#if(is_nan(dir.y)): dir.y = 0
 		
@@ -45,6 +44,7 @@ func _process(delta):
 	
 func _physics_process(delta):
 	for i in get_slide_collision_count():
+		#print(get_slide_collision(i).get_collider().get_instance_id())
 		match get_slide_collision(i).get_collider().get_meta("type"):
 			"projectile":
 				$Sprite2D/impact.play()
