@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cflw53cxmm4dh"]
+[gd_scene load_steps=15 format=3 uid="uid://cflw53cxmm4dh"]
 
 [ext_resource type="Script" path="res://Button.gd" id="1_nufx6"]
 [ext_resource type="Texture2D" uid="uid://ncmyyg1jey8j" path="res://export.png" id="2_4c5w0"]
@@ -7,27 +7,38 @@
 [ext_resource type="Script" path="res://TextureButton.gd" id="4_q6xsk"]
 [ext_resource type="Texture2D" uid="uid://343c1oblgurh" path="res://export (1).png" id="6_nmsmw"]
 
-[sub_resource type="SystemFont" id="SystemFont_wofbn"]
+[sub_resource type="SystemFont" id="SystemFont_7wwih"]
 font_names = PackedStringArray("Comic Sans MS")
 
 [sub_resource type="LabelSettings" id="LabelSettings_n0io3"]
-font = SubResource("SystemFont_wofbn")
+font = SubResource("SystemFont_7wwih")
 font_size = 58
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Gradient" id="Gradient_34e4e"]
+[sub_resource type="Gradient" id="Gradient_q3mvj"]
 colors = PackedColorArray(0.450538, 0.306959, 0.648021, 1, 1, 0.309804, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_fusm0"]
-gradient = SubResource("Gradient_34e4e")
+gradient = SubResource("Gradient_q3mvj")
 width = 1366
 
-[sub_resource type="SystemFont" id="SystemFont_lblwf"]
+[sub_resource type="SystemFont" id="SystemFont_u6owf"]
 font_names = PackedStringArray("Comic Sans MS")
 font_weight = 900
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_33l6j"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ubf40"]
+bg_color = Color(0.0823529, 0.0823529, 0.0823529, 0.509804)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 20.0
+expand_margin_top = 10.0
+expand_margin_right = 20.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xunka"]
 bg_color = Color(0.164706, 0.164706, 0.164706, 0.262745)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
@@ -40,8 +51,9 @@ expand_margin_bottom = 10.0
 
 [sub_resource type="Theme" id="Theme_t7xrt"]
 Button/font_sizes/font_size = 22
-Button/fonts/font = SubResource("SystemFont_lblwf")
-Button/styles/normal = SubResource("StyleBoxFlat_33l6j")
+Button/fonts/font = SubResource("SystemFont_u6owf")
+Button/styles/hover = SubResource("StyleBoxFlat_ubf40")
+Button/styles/normal = SubResource("StyleBoxFlat_xunka")
 
 [node name="Node2D" type="Node2D"]
 
