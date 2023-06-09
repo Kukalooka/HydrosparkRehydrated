@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b5jgq4m871gwj"]
+[gd_scene load_steps=32 format=3 uid="uid://b5jgq4m871gwj"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_1pipr"]
 [ext_resource type="Texture2D" uid="uid://cy403uqyhj7iw" path="res://floor.png" id="1_sxidc"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cmhjwfha6p1yu" path="res://enemy_spawner.tscn" id="8_3aqrr"]
 [ext_resource type="Script" path="res://Node2D.gd" id="8_fku6e"]
 [ext_resource type="AudioStream" uid="uid://cqrlklvmlf7j" path="res://Start wave MVM - Team Fortress 2 OST.mp3" id="16_wjxsb"]
+[ext_resource type="Script" path="res://health_bar.gd" id="17_wm25q"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_yk6hc"]
 frames = 3
@@ -158,7 +159,6 @@ region_enabled = true
 region_rect = Rect2(0, 0, 1920, 1920)
 
 [node name="Player" type="CharacterBody2D" parent="."]
-visible = false
 position = Vector2(604, 313)
 scale = Vector2(0.921708, 1)
 script = ExtResource("1_1pipr")
@@ -202,6 +202,21 @@ position = Vector2(34.5283, 38.6804)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
 
+[node name="UI" type="Control" parent="Player/Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -655.305
+offset_top = -313.0
+offset_right = -615.305
+offset_bottom = -273.0
+
+[node name="Health Bar" type="ColorRect" parent="Player/Camera2D/UI"]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 0, 0, 1)
+script = ExtResource("17_wm25q")
+
 [node name="Timer" type="Timer" parent="Player"]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("8_3aqrr")]
@@ -210,20 +225,6 @@ position_smoothing_enabled = true
 stream = ExtResource("16_wjxsb")
 volume_db = -14.0
 autoplay = true
-
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ColorRect" type="ColorRect" parent="UI"]
-layout_mode = 0
-offset_left = 11.0
-offset_top = 21.0
-offset_right = 51.0
-offset_bottom = 61.0
-color = Color(1, 0, 0, 1)
 
 [connection signal="animation_finished" from="Player/Top" to="Player" method="_on_top_animation_finished"]
 [connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]

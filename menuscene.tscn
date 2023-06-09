@@ -55,7 +55,7 @@ Button/fonts/font = SubResource("SystemFont_u6owf")
 Button/styles/hover = SubResource("StyleBoxFlat_ubf40")
 Button/styles/normal = SubResource("StyleBoxFlat_xunka")
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 
 [node name="Label" type="Label" parent="."]
 offset_left = 855.0
