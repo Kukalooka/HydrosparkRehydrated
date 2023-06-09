@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 @export var speed = 400
-@export var hp = 10
 var damage_boost = false
 const bulletPath = preload("res://ball.tscn")
 
@@ -39,8 +38,8 @@ func takeDmg(dmg):
 		$Timer.wait_time = 1 # wait_time in seconds
 		$Timer.start()
 		damage_boost = true
-		hp -= dmg
-		if hp <= 0:
+		Data.hp -= dmg
+		if Data.hp <= 0:
 			get_tree().change_scene_to_file("res://menuscene.tscn")
 	pass
 
