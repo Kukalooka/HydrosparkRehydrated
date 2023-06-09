@@ -6,6 +6,7 @@ const bulletPath = preload("res://ball.tscn")
 
 func _ready():
 	self.set_meta("type", "player")
+	Data.hp = 10
 	pass
 
 func get_input():
@@ -33,7 +34,9 @@ func _on_top_animation_finished():
 		$Top.play("default")
 	pass # Replace with function body.
 
-func takeDmg(dmg):
+func takeDmg(dmg, dir):
+	velocity = dir * speed / 5
+	position += velocity
 	if !damage_boost:
 		$Timer.wait_time = 1 # wait_time in seconds
 		$Timer.start()

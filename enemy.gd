@@ -3,6 +3,7 @@ var player
 
 var hp
 var dmg
+var dir
 @export var speed: int
 
 # Called when the node enters the scene tree for the first time.
@@ -28,12 +29,10 @@ func _ready():
 func _process(delta):
 	#takeDmg(1)
 	if(player != null):
-		var dir_x = player.position.x - position.x
-		var dir_y = player.position.y - position.y
 		
-		var angle = atan2(dir_y, dir_x)
+		var angle = atan2(player.position.y - position.y, player.position.x - position.x)
 		
-		var dir = Vector2(cos(angle), sin(angle))
+		dir = Vector2(cos(angle), sin(angle))
 		#if(is_nan(dir.x)): dir.x = 0
 		#if(is_nan(dir.y)): dir.y = 0
 		
@@ -52,7 +51,8 @@ func _physics_process(delta):
 				get_slide_collision(i).get_collider().queue_free()
 				queue_free()
 			"player":
-				$"../Player".takeDmg(1)
+				$"../Player".takeDmg(1, dir)
+				queue_free()
 
 func takeDmg(dmg):
 	hp -= dmg
