@@ -46,13 +46,10 @@ func _process(delta):
 	
 func _physics_process(delta):
 	for i in get_slide_collision_count():
-		match get_slide_collision(i).get_collider().get_meta("type"):
-			"projectile":
-				$Sprite2D/impact.play()
-				get_slide_collision(i).get_collider().queue_free()
-				queue_free()
-			"player":
-				$"../Player".takeDmg(1)
+		if get_slide_collision(i).get_collider().get_meta("type") == "projectile":
+			$Sprite2D/impact.play()
+			get_slide_collision(i).get_collider().queue_free()
+			queue_free()
 
 func takeDmg(dmg):
 	hp -= dmg
