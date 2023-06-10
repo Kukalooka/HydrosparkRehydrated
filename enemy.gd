@@ -50,6 +50,8 @@ func _physics_process(delta):
 			"projectile":
 				$Sprite2D/impact.play()
 				
+				Data.score += 5
+				
 				if randi()%10 == 1:
 					var botahwatah = watah.instantiate()
 					get_parent().add_child(botahwatah)

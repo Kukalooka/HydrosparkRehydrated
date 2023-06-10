@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Area2D.gd" id="2_5biw3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wjhhe"]
-size = Vector2(9.74028, 1.14931)
+size = Vector2(14.6104, 1.72397)
 
 [node name="StaticBody2D" type="StaticBody2D"]
 
@@ -16,6 +16,6 @@ texture = ExtResource("1_mfj51")
 script = ExtResource("2_5biw3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2.38419e-07, 0)
+position = Vector2(2.38419e-07, 9.53674e-07)
 scale = Vector2(3.28533, -27.8427)
 shape = SubResource("RectangleShape2D_wjhhe")

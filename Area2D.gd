@@ -16,5 +16,6 @@ func _physics_process(delta):
 		#print(get_slide_collision(i).get_collider().get_instance_id())
 		match i.get_meta("type"):
 			"player":
+				Data.score += 5
 				i.heal(2.5)
 				get_parent().queue_free()

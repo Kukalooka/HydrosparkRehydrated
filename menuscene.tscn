@@ -78,10 +78,10 @@ texture = SubResource("GradientTexture1D_fusm0")
 centered = false
 
 [node name="Button" type="Button" parent="."]
-offset_left = 1016.0
-offset_top = 376.0
-offset_right = 1091.0
-offset_bottom = 408.0
+offset_left = 984.0
+offset_top = 416.0
+offset_right = 1059.0
+offset_bottom = 448.0
 theme = SubResource("Theme_t7xrt")
 action_mode = 0
 text = "START"
@@ -104,16 +104,5 @@ texture = ExtResource("2_4c5w0")
 position = Vector2(918, 140)
 texture = ExtResource("6_nmsmw")
 
-[node name="Button2" type="Button" parent="."]
-offset_left = 1000.0
-offset_top = 480.0
-offset_right = 1100.0
-offset_bottom = 512.0
-theme = SubResource("Theme_t7xrt")
-action_mode = 0
-text = "CREDITS"
-script = ExtResource("1_nufx6")
-
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
 [connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]
-[connection signal="pressed" from="Button2" to="Button2" method="_on_pressed"]
