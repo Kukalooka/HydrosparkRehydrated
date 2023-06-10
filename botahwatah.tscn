@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpkiobsxppedi"]
+
+[ext_resource type="Texture2D" uid="uid://c411vna73jy1k" path="res://boowatah.png" id="1_mfj51"]
+[ext_resource type="Script" path="res://Area2D.gd" id="2_5biw3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wjhhe"]
+size = Vector2(9.74028, 1.14931)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+texture = ExtResource("1_mfj51")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_5biw3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2.38419e-07, 0)
+scale = Vector2(3.28533, -27.8427)
+shape = SubResource("RectangleShape2D_wjhhe")
