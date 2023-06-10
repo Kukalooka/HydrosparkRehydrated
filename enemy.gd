@@ -1,6 +1,8 @@
 extends CharacterBody2D
 var player
 
+const watah = preload("res://botahwatah.tscn")
+
 var hp
 var dmg
 var dir
@@ -14,13 +16,13 @@ func _ready():
 	var size = get_viewport().size
 	match randi_range(0, 3):
 		0:
-			position = Vector2(player.position.x - size.x/2,player.position.y + randi_range(-size.y/2,size.y/2))
+			position = Vector2(player.position.x - size.x/2,player.position.y + randi_range(-size.y/2,size.y/2) - $Sprite2D.texture.get_width() - 10)
 		1:
-			position = Vector2(player.position.x + size.x/2,player.position.y + randi_range(-size.y/2,size.y/2))
+			position = Vector2(player.position.x + size.x/2,player.position.y + randi_range(-size.y/2,size.y/2) + $Sprite2D.texture.get_width() + 10)
 		2:
-			position = Vector2(player.position.x + randi_range(-size.x/2,size.x/2),player.position.y - size.y/2)
+			position = Vector2(player.position.x + randi_range(-size.x/2,size.x/2),player.position.y - size.y/2 - $Sprite2D.texture.get_height() - 10)
 		3:
-			position = Vector2(player.position.x + randi_range(-size.x/2,size.x/2),player.position.y + size.y/2)
+			position = Vector2(player.position.x + randi_range(-size.x/2,size.x/2),player.position.y + size.y/2 + $Sprite2D.texture.get_height() + 10)
 	pass # Replace with function body.
 
 
@@ -47,6 +49,12 @@ func _physics_process(delta):
 		match get_slide_collision(i).get_collider().get_meta("type"):
 			"projectile":
 				$Sprite2D/impact.play()
+				
+				if randi()%10 == 1:
+					var botahwatah = watah.instantiate()
+					get_parent().add_child(botahwatah)
+					botahwatah.position = self.position
+				
 				get_slide_collision(i).get_collider().queue_free()
 				queue_free()
 			"player":

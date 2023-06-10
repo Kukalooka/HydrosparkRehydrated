@@ -16,14 +16,13 @@ func get_input():
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed('shot'):
-		Data.hp -= 0.1
+		Data.hp -= 0.5
 		$Top/shoot.play()
 		$Top.play("shoot")
 	get_input()
 	move_and_slide()
 	if Data.hp <= 0:
 		get_tree().change_scene_to_file("res://lost.tscn")
-	
 
 func shot():
 	var bullet = bulletPath.instantiate()
@@ -48,6 +47,10 @@ func takeDmg(dmg, dir):
 		damage_boost = true
 		Data.hp -= dmg
 	pass
+	
+func heal(amount):
+	$Top/slurp.play()
+	Data.hp += amount
 
 func _on_timer_timeout():
 	print("stop")
